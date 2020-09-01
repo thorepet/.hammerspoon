@@ -18,6 +18,8 @@ function office()
     if audioIsInternal() then
         hs.audiodevice.defaultOutputDevice():setMuted(true)
     end
+
+    os.execute("sh mac-dnd.sh 1")
 end
 
 hs.hotkey.bind(hyper, "O", office)
@@ -25,12 +27,14 @@ hs.hotkey.bind(hyper, "O", office)
 -- Home mode
 function home()
     hs.alert.show("Home mode")
-
+    
     -- Stop Caffeine
     spoon.Caffeine:stop()
-
+    
     -- Unmute speakers
     hs.audiodevice.defaultOutputDevice():setMuted(false)
+    
+    os.execute("sh mac-dnd.sh 0")
 end
 
 hs.hotkey.bind(hyper, "H", home)
@@ -39,14 +43,16 @@ hs.hotkey.bind(hyper, "H", home)
 -- Out mode
 function out()
     hs.alert.show("Out mode")
-
+    
     -- Stop Caffeine
     spoon.Caffeine:stop()
-
+    
     -- Unmute speakers
     if audioIsInternal() then
         hs.audiodevice.defaultOutputDevice():setMuted(true)
     end
+    
+    os.execute("sh mac-dnd.sh 0")
 end
 
 hs.hotkey.bind(hyper, "U", out)
