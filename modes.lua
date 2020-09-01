@@ -20,7 +20,7 @@ function office()
     end
 
     -- Execute script to enable Do Not Disturb.
-    os.execute("sh mac-dnd.sh 1")
+    os.execute("sh mac-dnd.sh --enable")
 end
 
 hs.hotkey.bind(hyper, "O", office)
@@ -36,7 +36,7 @@ function home()
     hs.audiodevice.defaultOutputDevice():setMuted(false)
     
     -- Execute script to disable Do Not Disturb.
-    os.execute("sh mac-dnd.sh 0")
+    os.execute("sh mac-dnd.sh --disable")
 end
 
 hs.hotkey.bind(hyper, "H", home)
@@ -55,7 +55,7 @@ function out()
     end
 
     -- Execute script to disable Do Not Disturb.
-    os.execute("sh mac-dnd.sh 0")
+    os.execute("sh mac-dnd.sh --disable")
 end
 
 hs.hotkey.bind(hyper, "U", out)

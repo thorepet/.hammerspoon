@@ -9,19 +9,25 @@
 NCPATH=~/Library/Preferences/ByHost/com.apple.notificationcenterui
 DATE="`date -u +\"%Y-%m-%d %H:%M:%S +000\"`"
 
-if [ $1 -eq 1 ]
-then
-  defaults -currentHost write $NCPATH doNotDisturb -boolean true
-  defaults -currentHost write $NCPATH doNotDisturbDate -date "$DATE"
-fi
+case $1 in
 
-if [ $1 -eq 0 ]
-then
-  defaults -currentHost write $NCPATH doNotDisturb -boolean false
+  --enable)
+    defaults -currentHost write $NCPATH doNotDisturb -boolean true
+    defaults -currentHost write $NCPATH doNotDisturbDate -date "$DATE"
+  ;;
+
+  --disable)
+    defaults -currentHost write $NCPATH doNotDisturb -boolean false
   
-  # When deactivating "by hand" the doNotDisturbDate field is removed.
-  defaults -currentHost delete $NCPATH doNotDisturbDate
-fi
+    # When deactivating "by hand" the doNotDisturbDate field is removed.
+    defaults -currentHost delete $NCPATH doNotDisturbDate
+  ;;
+
+  *)
+    echo "None, or wrong option provided."
+  ;;
+
+esac
 
 killall NotificationCenter
 
