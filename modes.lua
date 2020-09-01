@@ -19,6 +19,7 @@ function office()
         hs.audiodevice.defaultOutputDevice():setMuted(true)
     end
 
+    -- Execute script to enable Do Not Disturb.
     os.execute("sh mac-dnd.sh 1")
 end
 
@@ -34,6 +35,7 @@ function home()
     -- Unmute speakers
     hs.audiodevice.defaultOutputDevice():setMuted(false)
     
+    -- Execute script to disable Do Not Disturb.
     os.execute("sh mac-dnd.sh 0")
 end
 
@@ -51,7 +53,8 @@ function out()
     if audioIsInternal() then
         hs.audiodevice.defaultOutputDevice():setMuted(true)
     end
-    
+
+    -- Execute script to disable Do Not Disturb.
     os.execute("sh mac-dnd.sh 0")
 end
 
