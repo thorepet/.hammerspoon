@@ -13,12 +13,12 @@ function office()
     -- Prevent sleep
     spoon.Caffeine:start()
     spoon.Caffeine:setState(true)
-
+    
     -- Mute speakers, if internal
     if audioIsInternal() then
         hs.audiodevice.defaultOutputDevice():setMuted(true)
     end
-
+    
     -- Execute script to enable Do Not Disturb.
     os.execute("sh mac-dnd.sh --enable")
 end
@@ -30,6 +30,8 @@ function home()
     hs.alert.show("Home sweet home")
     
     -- Stop Caffeine
+    spoon.Caffeine:start()
+    spoon.Caffeine:setState(false)
     spoon.Caffeine:stop()
     
     -- Unmute speakers
@@ -47,6 +49,8 @@ function out()
     hs.alert.show("Whereever...")
     
     -- Stop Caffeine
+    spoon.Caffeine:start()
+    spoon.Caffeine:setState(false)
     spoon.Caffeine:stop()
     
     -- Unmute speakers
