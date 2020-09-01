@@ -3,7 +3,8 @@
 # Enable or disable the Do Not Disturb mode in macOS. The script edits the
 # notification center's .plist file to toggle the mode. 
 # A bug is that when disabling the mode, the notification center's icon in the
-# menu bar stays greyed out. 
+# menu bar stays greyed out.
+# Provide one of {0, 1} as a trailing command line argument.
 
 NCPATH=~/Library/Preferences/ByHost/com.apple.notificationcenterui
 DATE="`date -u +\"%Y-%m-%d %H:%M:%S +000\"`"
@@ -12,8 +13,6 @@ if [ $1 -eq 1 ]
 then
   defaults -currentHost write $NCPATH doNotDisturb -boolean true
   defaults -currentHost write $NCPATH doNotDisturbDate -date "$DATE"
-
-  killall NotificationCenter
 fi
 
 if [ $1 -eq 0 ]
@@ -22,9 +21,9 @@ then
   
   # When deactivating "by hand" the doNotDisturbDate field is removed.
   defaults -currentHost delete $NCPATH doNotDisturbDate
-
-  killall NotificationCenter
 fi
+
+killall NotificationCenter
 
 # https://gist.github.com/ryangreenberg/5267f68a8e7b07ea66370b4eb5580ab9
 # 
