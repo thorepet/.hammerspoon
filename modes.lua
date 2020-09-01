@@ -8,7 +8,7 @@
 hs.loadSpoon("Caffeine")
 
 function office()
-    hs.alert.show("Office mode")
+    hs.alert.show("A720 is the best")
 
     -- Prevent sleep
     spoon.Caffeine:start()
@@ -27,7 +27,7 @@ hs.hotkey.bind(hyper, "O", office)
 
 -- Home mode
 function home()
-    hs.alert.show("Home mode")
+    hs.alert.show("Home sweet home")
     
     -- Stop Caffeine
     spoon.Caffeine:stop()
@@ -44,7 +44,7 @@ hs.hotkey.bind(hyper, "H", home)
 
 -- Out mode
 function out()
-    hs.alert.show("Out mode")
+    hs.alert.show("Whereever...")
     
     -- Stop Caffeine
     spoon.Caffeine:stop()
