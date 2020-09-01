@@ -12,7 +12,7 @@ function ssidIsEduroam()
     return SSID == "eduroam"
 end
 
--- Determine if the current audio output device is the built in speakers.
+-- Determine if the current audio output device is the built-in speakers.
 function audioIsInternal()
     DEVICE = hs.audiodevice.defaultOutputDevice():name()
     return DEVICE == "Built-in Output"
@@ -21,7 +21,6 @@ end
 -- Mute speakers if we are on eduroam, and the output device is the internal
 -- speakers.
 function muteInternalIfEduroam()
-
     if ssidIsEduroam() then
         if audioIsInternal() then
             hs.audiodevice.defaultOutputDevice():setMuted(true)
@@ -29,7 +28,6 @@ function muteInternalIfEduroam()
     end
 end
 
--- Set up WiFi watcher, calls the provided function for each change in the
--- network
+-- Set up WiFi watcher: Calls the provided function each time the SSID changes.
 wifiWatcher = hs.wifi.watcher.new(muteInternalIfEduroam)
 wifiWatcher:start()
