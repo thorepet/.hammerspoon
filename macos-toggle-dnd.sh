@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Thore Petersen
-# 01.09.2022
+# 01.09.2020
 
 # Enable or disable the Do Not Disturb mode in macOS. The script edits the
 # notification center's .plist file to toggle the mode.
 
 # A bug is that when disabling the mode, the notification center's icon in the
-# menu bar stays greyed out. The button must change some other values somewhere.
-# This implementation toggles the same changes to the notification center's
-# .plist file, as the switch does.
+# menu bar remains greyed out. The button must change some other values
+# somewhere. This implementation toggles the same changes to the notification
+# center's .plist file as the switch in the sidebar does.
 
 # Provide one of --enable or --disable as a trailing command line argument.
 
@@ -37,6 +37,7 @@ case $1 in
 
 esac
 
+#automatically restarts the process and loads the .plist
 killall NotificationCenter
 
 # https://gist.github.com/ryangreenberg/5267f68a8e7b07ea66370b4eb5580ab9
