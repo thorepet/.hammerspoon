@@ -5,8 +5,6 @@
 -- hyper-key-combo plus some letter.
 
 -- Office mode
-hs.loadSpoon("Caffeine")
-
 function office()
     hs.alert.show("A720 is the best")
 
