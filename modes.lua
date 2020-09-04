@@ -11,6 +11,9 @@ function office()
     -- Prevent sleep
     spoon.Caffeine:start()
     spoon.Caffeine:setState(true)
+    -- Experimental: to remove menubar icon, stop Caffeine. State should be
+    -- preserved.
+    spoon.Caffeine:stop()
     
     -- Mute speakers, if internal
     if audioIsInternal() then
