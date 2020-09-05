@@ -12,12 +12,6 @@ function ssidIsEduroam()
     return SSID == "eduroam"
 end
 
--- Determine if the current audio output device is the built-in speakers.
-function audioIsInternal()
-    DEVICE = hs.audiodevice.defaultOutputDevice():name()
-    return DEVICE == "Built-in Output"
-end
-
 -- Mute speakers if we are on eduroam, and the output device is the internal
 -- speakers.
 function muteInternalIfEduroam()

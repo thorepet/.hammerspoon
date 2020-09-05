@@ -1,12 +1,14 @@
 -- Define hyper key
 hyper = {"cmd", "alt", "ctrl"}
 
--- Load spoons
-hs.loadSpoon("Caffeine")
+-- Define functions
+function audioIsInternal()
+    -- Determine if the current audio output device is the built-in speaker.
+    DEVICE = hs.audiodevice.defaultOutputDevice():name()
+    return DEVICE == "Built-in Output"
+end
 
--- load individual scripts
+-- Load individual scripts
 require("muteIfEduroam")
 require("modes")
 require("screenLock")
-
--- Move audio control to separat script, library like.
