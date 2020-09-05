@@ -9,11 +9,7 @@ function office()
     hs.alert.show("A720 is the best")
 
     -- Prevent sleep
-    spoon.Caffeine:start()
-    spoon.Caffeine:setState(true)
-    -- Experimental: to remove menubar icon, stop Caffeine. State should be
-    -- preserved.
-    spoon.Caffeine:stop()
+    hs.caffeinate.set("displayIdle", true)
     
     -- Mute speakers, if internal
     if audioIsInternal() then
@@ -30,10 +26,8 @@ hs.hotkey.bind(hyper, "O", office)
 function home()
     hs.alert.show("Home sweet home")
     
-    -- Stop Caffeine
-    spoon.Caffeine:start()
-    spoon.Caffeine:setState(false)
-    spoon.Caffeine:stop()
+    -- Allow display sleep
+    hs.caffeinate.set("displayIdle", false)
     
     -- Unmute speakers
     hs.audiodevice.defaultOutputDevice():setMuted(false)
@@ -49,12 +43,10 @@ hs.hotkey.bind(hyper, "H", home)
 function out()
     hs.alert.show("Whereever...")
     
-    -- Stop Caffeine
-    spoon.Caffeine:start()
-    spoon.Caffeine:setState(false)
-    spoon.Caffeine:stop()
+    -- Allow display sleep
+    hs.caffeinate.set("displayIdle", false)
     
-    -- Unmute speakers
+    -- Mute speakers
     if audioIsInternal() then
         hs.audiodevice.defaultOutputDevice():setMuted(true)
     end

@@ -1,15 +1,19 @@
 -- Thore Petersen
--- 04.09.2020
+-- 05.09.2020
 
--- Stop Caffeine when the screen is locked, and restart it when it is unlocked.
--- Caffeine:stop() preserves the internal state, such that Caffeine:start() is
--- automatically set to the state before the screen was locked.
+-- When the screen is locked, the screen and computer should be allowed to
+-- sleep. When the computer is unlocked again, the state before locking should
+-- be restored. The function stores the state when the screen is locked, and
+-- sets it to false, to allow the screen to sleep. When the computer is
+-- unlocked, the previous state is restored.
+
 
 function caffCallback(event)
     if event == hs.caffeinate.watcher.screensDidLock then
-        spoon.Caffeine:stop()
+        displayIdleState = hs.caffeinate.get("displayIdle")
+        hs.caffeinate.set("displayIdle", false)
     elseif event == hs.caffeinate.watcher.screensDidUnlock then
-        spoon.Caffeine:start()
+        hs.caffeinate.set("displayIdle", displayIdleState)
     end
 
 end
