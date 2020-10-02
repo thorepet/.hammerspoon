@@ -20,8 +20,14 @@ function win_office_fullscreen()
     if screen then
         win = hs.window.focusedWindow()
 
-        -- Exit fullscreen, otherwise hs.window:moveToScreen() does not work.
-        win:setFullScreen(false)
+        if win:isFullScreen() then
+            -- Exit fullscreen, otherwise :moveToScreen() does not work.
+            win:setFullScreen(false)
+
+            -- Sleep until animation of fullscreen exit is complete. Otherwise
+            -- there is a dead window on screen until the app is quit.
+            os.execute("sleep 1")
+        end
 
         win:moveToScreen(screen)
         win:setFullScreen(true)
