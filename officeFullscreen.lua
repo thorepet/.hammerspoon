@@ -1,8 +1,10 @@
 -- Thore Petersen
 -- 30.09.20
 
--- Function to move the focussed window to my second screen and toggle full
--- screen mode.
+-- This function moves the currently focused window to the second screen in my
+-- office, and toggles fullscreen. This functionality is bound to the hyper+F
+-- hotkey.
+
 function win_office_fullscreen()
 
     -- Find my office screen. Returns hs.screen object, or nil.
@@ -18,7 +20,7 @@ function win_office_fullscreen()
     if screen then
         win = hs.window.focusedWindow()
 
-        -- Exit fullscreen, otherwise :moveToScreen() does not work.
+        -- Exit fullscreen, otherwise hs.window:moveToScreen() does not work.
         win:setFullScreen(false)
 
         win:moveToScreen(screen)

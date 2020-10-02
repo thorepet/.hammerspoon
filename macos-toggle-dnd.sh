@@ -37,7 +37,7 @@ case $1 in
 
 esac
 
-#automatically restarts the process and loads the .plist
+# Restart the process to reload the new .plist.
 killall NotificationCenter
 
 # https://gist.github.com/ryangreenberg/5267f68a8e7b07ea66370b4eb5580ab9

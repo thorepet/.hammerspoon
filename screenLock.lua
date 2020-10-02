@@ -7,7 +7,6 @@
 -- sets it to false, to allow the screen to sleep. When the computer is
 -- unlocked, the previous state is restored.
 
-
 function caffCallback(event)
     if event == hs.caffeinate.watcher.screensDidLock then
         displayIdleState = hs.caffeinate.get("displayIdle")
